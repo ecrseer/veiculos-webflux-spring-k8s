@@ -13,12 +13,12 @@ public class CepWebClient {
         this.webClient = webClientBuilder.baseUrl("https://viacep.com.br/ws/").build();
     }
 
-    public Mono<CepDTO> obterDadosCep(String cep) {
-        Mono<CepDTO> endereco = webClient
+    public Mono<ViaCepDTO> obterDadosCep(String cep) {
+        Mono<ViaCepDTO> endereco = webClient
                 .get()
                 .uri(cep + "/json/")
                 .retrieve()
-                .bodyToFlux(CepDTO.class).next();
+                .bodyToFlux(ViaCepDTO.class).next();
         return endereco;
     }
 

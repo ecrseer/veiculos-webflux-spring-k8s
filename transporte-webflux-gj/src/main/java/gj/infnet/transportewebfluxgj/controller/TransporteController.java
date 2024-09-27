@@ -3,7 +3,7 @@ package gj.infnet.transportewebfluxgj.controller;
 
 import gj.infnet.transportewebfluxgj.commands.CriarTransporteCommand;
 import gj.infnet.transportewebfluxgj.domain.Transporte;
-import gj.infnet.transportewebfluxgj.service.CepDTO;
+import gj.infnet.transportewebfluxgj.service.ViaCepDTO;
 import gj.infnet.transportewebfluxgj.service.CepWebClient;
 import gj.infnet.transportewebfluxgj.service.TransporteRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +47,7 @@ public class TransporteController {
     }
 
     @GetMapping("/cep/{cepRequisitado}")
-    public Mono<CepDTO> buscaTemperaturaSaoPaulo(@PathVariable String cepRequisitado) {
+    public Mono<ViaCepDTO> buscaCepRequisitado(@PathVariable String cepRequisitado) {
         return cepWebClient.obterDadosCep(cepRequisitado);
     }
 
