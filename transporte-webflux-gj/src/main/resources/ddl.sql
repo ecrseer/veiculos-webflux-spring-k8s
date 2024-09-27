@@ -1,16 +1,11 @@
 CREATE TABLE transporte
 (
-    id                 BIGINT NOT NULL,
-    veiculoId          BIGINT,
-    dataInicio         DATETIME,
-    dataFim            DATETIME,
-    responsavelEntrega VARCHAR(255),
-    CEP                VARCHAR(255),
-    estado             VARCHAR(255),
-    cidade             VARCHAR(255),
-    bairro             VARCHAR(255),
-    logradouro         VARCHAR(255),
-    duracaoHoras       INT,
-    PRIMARY KEY (id)
+    id                 BIGINT AUTO_INCREMENT PRIMARY KEY,
+    veiculo          BIGINT NULL,
+    CEP                VARCHAR(255) NULL,
+    estado             VARCHAR(255) NULL,
+    cidade             VARCHAR(255) NULL,
+    bairro             VARCHAR(255) NULL,
+    logradouro         VARCHAR(255) NULL
 );
 

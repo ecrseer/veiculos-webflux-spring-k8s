@@ -17,5 +17,4 @@ public class CepDTO {
     private String ibge;
     private String gia;
     private String ddd;
-    private String siafi;
 }
