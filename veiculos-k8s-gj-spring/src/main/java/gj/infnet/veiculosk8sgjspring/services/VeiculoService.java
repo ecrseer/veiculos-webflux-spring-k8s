@@ -25,8 +25,10 @@ public class VeiculoService {
         return veiculoRepository.findAll();
     }
 
-    public void deletarVeiculo(Long id) {
+    public Veiculo deletarVeiculo(Long id) {
+        Veiculo paraDeletar = buscarVeiculo(id);
         veiculoRepository.deleteById(id);
+        return paraDeletar;
     }
 
 

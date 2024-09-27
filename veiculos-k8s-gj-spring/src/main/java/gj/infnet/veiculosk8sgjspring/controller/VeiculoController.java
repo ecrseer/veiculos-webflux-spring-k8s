@@ -48,4 +48,16 @@ public class VeiculoController {
         }
     }
 
+    @DeleteMapping("/por-id/{id}")
+    @Operation(summary = "deleta um veiculo por id")
+    public Veiculo deletarUm(@PathVariable Long id) {
+        return veiculoService.deletarVeiculo(id);
+    }
+
+    @PutMapping
+    @Operation(summary = "Modifica um veiculo ")
+    public Veiculo atualizar(@RequestBody Veiculo veiculo) {
+        return veiculoService.salvarVeiculo(veiculo);
+    }
+
 }
