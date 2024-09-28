@@ -1,32 +1,47 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: servidor-eureka
+  name: ms-transportes-enderecos
 spec:
   selector:
     matchLabels:
-      app: servidor-eureka
+      app: ms-transportes-enderecos
   replicas: 1
   template:
     metadata:
       labels:
-        app: servidor-eureka
+        app: ms-transportes-enderecos
     spec:
       containers:
-        - name: servidor-eureka
-          image: gabj/webflux-eureka-server-imagem
+        - name: ms-transportes-enderecos
+          image: gabj/transporte-gj-imagem
           ports:
-            - containerPort: 8761
+            - containerPort: 8092
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: servidor-eureka
+  name: ms-transportes-enderecos
 spec:
   type: NodePort
   ports:
-    - port: 8761
-      targetPort: 8761
-      nodePort: 32421
+    - port: 8092
+      targetPort: 8092
+      nodePort: 32424
   selector:
-    app: servidor-eureka
+    app: ms-transportes-enderecos
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer-do-ms-transportes-enderecos
+spec:
+  selector:
+    app: ms-transportes-enderecos
+  ports:
+    - protocol: TCP
+      port: 8092
+      targetPort: 8092
+  type: LoadBalancer
+
