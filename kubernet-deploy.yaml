@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servidor-eureka
+spec:
+  selector:
+    matchLabels:
+      app: servidor-eureka
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: servidor-eureka
+    spec:
+      containers:
+        - name: servidor-eureka
+          image: gabj/webflux-eureka-server-imagem
+          ports:
+            - containerPort: 8761
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: servidor-eureka
+spec:
+  type: NodePort
+  ports:
+    - port: 8761
+      targetPort: 8761
+      nodePort: 32421
+  selector:
+    app: servidor-eureka
